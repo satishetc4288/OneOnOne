@@ -10,7 +10,7 @@ import com.cdk.springboot.configuration.JpaConfiguration;
 
 
 @Import(JpaConfiguration.class)
-@SpringBootApplication(scanBasePackages={"com.cdk"})// same as @Configuration @EnableAutoConfiguration @ComponentScan
+@SpringBootApplication(scanBasePackages={"com.cdk.springboot"})// same as @Configuration @EnableAutoConfiguration @ComponentScan
 public class SpringBootCRUDApp extends SpringBootServletInitializer{
 
 	public static void main(String[] args) {
