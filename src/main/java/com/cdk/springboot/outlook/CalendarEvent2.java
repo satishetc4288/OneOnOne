@@ -1,10 +1,8 @@
-package com.cdk.oneonone.outlook;
+package com.cdk.springboot.outlook;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Properties;
 import java.util.UUID;
 
 import javax.activation.DataHandler;
@@ -12,7 +10,6 @@ import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
-import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
@@ -21,7 +18,6 @@ import javax.mail.util.ByteArrayDataSource;
 
 import org.joda.time.DateTime;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import biweekly.Biweekly;
 import biweekly.ICalendar;

@@ -1,4 +1,4 @@
-package com.cdk.oneonone.mongo;
+package com.cdk.springboot.mongo;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

@@ -1,20 +1,21 @@
-package com.cdk.oneonone.controllers;
+package com.cdk.springboot.controller;
 
-import com.cdk.oneonone.mongo.Meeting;
-import com.cdk.oneonone.mongo.repos.MeetingRepository;
-
+import com.cdk.springboot.mongo.Meeting;
+import com.cdk.springboot.mongo.repos.MeetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @EnableAutoConfiguration
-@RequestMapping("/cdk")
+@EnableMongoRepositories({"com.cdk"})
+@RequestMapping("/api")
 public class MeetingController{
 
-   // @Autowired
+    @Autowired
     MeetingRepository meetingRepository;
 
     @RequestMapping(value = "/insert/meeting", method = RequestMethod.POST)

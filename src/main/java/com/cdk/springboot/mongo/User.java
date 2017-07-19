@@ -1,4 +1,4 @@
-package com.cdk.oneonone.mongo;
+package com.cdk.springboot.mongo;
 
 /**
  * Created by rajputs on 7/17/17.

@@ -1,19 +1,21 @@
-package com.cdk.oneonone.controllers;
+package com.cdk.springboot.controller;
 
-import com.cdk.oneonone.mongo.User;
-import com.cdk.oneonone.mongo.repos.UserRepository;
+import com.cdk.springboot.mongo.User;
+import com.cdk.springboot.mongo.repos.UserMRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @EnableAutoConfiguration
-@RequestMapping("/cdk")
+@EnableMongoRepositories({"com.cdk.oneonone"})
+@RequestMapping("/api")
 public class UserController {
 
-   // @Autowired
-    UserRepository userRepository;
+    @Autowired
+    UserMRepository userRepository;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody

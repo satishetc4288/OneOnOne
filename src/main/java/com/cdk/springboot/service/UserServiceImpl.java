@@ -5,6 +5,8 @@ import java.util.List;
 import com.cdk.springboot.model.User;
 import com.cdk.springboot.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service("userService")
 @Transactional
+@EnableJpaRepositories({"com.cdk.springboot"})
 public class UserServiceImpl implements UserService{
 
 	@Autowired

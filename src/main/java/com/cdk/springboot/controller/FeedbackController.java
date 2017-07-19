@@ -1,20 +1,21 @@
-package com.cdk.oneonone.controllers;
+package com.cdk.springboot.controller;
 
-import com.cdk.oneonone.mongo.Feedback;
-import com.cdk.oneonone.mongo.repos.FeedbackRepository;
-
+import com.cdk.springboot.mongo.Feedback;
+import com.cdk.springboot.mongo.repos.FeedbackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-//@EnableAutoConfiguration
-@RequestMapping("/cdk")
+@EnableAutoConfiguration
+@EnableMongoRepositories({"com.cdk.oneonone"})
+@RequestMapping("/api")
 public class FeedbackController{
 
-  //  @Autowired
+    @Autowired
     FeedbackRepository feedbackRepository;
 
     @RequestMapping(value = "/get/all/feedbacks", method = RequestMethod.GET)
@@ -26,7 +27,7 @@ public class FeedbackController{
 
     @RequestMapping(value = "/insert/feedback", method = RequestMethod.POST)
     @ResponseBody
-    public Feedback insertFeedback(@RequestBody Feedback feedback) {
+    public com.cdk.springboot.mongo.Feedback insertFeedback(@RequestBody Feedback feedback) {
 
         return feedbackRepository.insert(feedback);
     }

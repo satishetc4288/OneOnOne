@@ -1,13 +1,15 @@
-package com.cdk.oneonone.mongo.repos;
+package com.cdk.springboot.mongo.repos;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
-import com.cdk.oneonone.mongo.User;
+import com.cdk.springboot.mongo.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface UserRepository extends MongoRepository<User, String> {
+@Repository
+public interface UserMRepository extends MongoRepository<User, String> {
 
     @Query("{name:'?0'}")
     public List<User> findCustomByName(String name);
