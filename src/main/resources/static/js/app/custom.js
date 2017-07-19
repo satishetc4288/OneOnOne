@@ -6,30 +6,6 @@ $( function() {
      });
 
      //
-     var availableTags = [
-         "ActionScript",
-         "AppleScript",
-         "Asp",
-         "BASIC",
-         "C",
-         "C++",
-         "Clojure",
-         "COBOL",
-         "ColdFusion",
-         "Erlang",
-         "Fortran",
-         "Groovy",
-         "Haskell",
-         "Java",
-         "JavaScript",
-         "Lisp",
-         "Perl",
-         "PHP",
-         "Python",
-         "Ruby",
-         "Scala",
-         "Scheme"
-     ];
      $( "#tags, #tags2" ).autocomplete({
          source: availableTags
      });
@@ -39,8 +15,6 @@ $( function() {
 
      //
      $('#basicExample, #basicExample2').timepicker();
-
-
      //
      $('.feedback-link').click(function(){
          $('#myModal').modal('show');
