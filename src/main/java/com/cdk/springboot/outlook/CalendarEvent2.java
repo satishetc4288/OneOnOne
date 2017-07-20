@@ -42,13 +42,13 @@ public CalendarEvent2(JavaMailSender javaMailSender) {
     this.javaMailSender = javaMailSender;
 }
 
-public void createCal(String sender,String reciepnts, String reciepntsEmail,String startDate, String endDate, String meetingRoom,String subjectLine, String description) throws MessagingException, ParseException, IOException {
+public void createCal(String sender,String reciepnts, String meetingFromTime,String startDate, String meetingToTime, String meetingRoom,String subjectLine, String description) throws MessagingException, ParseException, IOException {
 
     ICalendar ical = new ICalendar();
 
     VEvent event = new VEvent();
 
-    Attendee attendee = new Attendee(reciepnts, reciepntsEmail);
+    Attendee attendee = new Attendee(reciepnts, reciepnts);
     attendee.setRsvp(true);
     attendee.setRole(Role.ATTENDEE);
     attendee.setParticipationStatus(ParticipationStatus.NEEDS_ACTION);
@@ -57,6 +57,8 @@ public void createCal(String sender,String reciepnts, String reciepntsEmail,Stri
     event.addAttendee(attendee);
 
     event.setSummary("hello");
+    
+    
 
     DateTime dt = new DateTime(2017, 8, 20, 12, 50);
     DateTime et = new DateTime(2017, 8, 20, 13, 30);
@@ -80,7 +82,7 @@ public void createCal(String sender,String reciepnts, String reciepntsEmail,Stri
 
     event.setUid("cdk"+UUID.randomUUID());
     event.setOrganizer(sender);
-    event.setLocation("Conference");
+    event.setLocation(meetingRoom);
 
     ical.addEvent(event);
     ical.setMethod("REQUEST");
@@ -93,7 +95,7 @@ public void createCal(String sender,String reciepnts, String reciepntsEmail,Stri
     message.addHeaderLine("method=REQUEST");
 
     message.setFrom(new InternetAddress(sender));
-    message.addRecipient(Message.RecipientType.TO, new InternetAddress(reciepntsEmail));
+    message.addRecipient(Message.RecipientType.TO, new InternetAddress(reciepnts));
     message.setSubject("You're Invited to a Meeting");
 
     

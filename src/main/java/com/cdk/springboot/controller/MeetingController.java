@@ -32,7 +32,7 @@ public class MeetingController{
     public @ResponseBody ResponseEntity<Meeting> insertMeeting(@RequestBody Meeting meeting) {
         CalendarEvent2 cl = new CalendarEvent2(CalendarUtil.getMailerService());
         try {
-            cl.createCal(meeting.getSender(), meeting.getReceiver(), meeting.getReceiver(), meeting.getMeetingDate(), meeting.getMeetingFromTime(), meeting.getMeetingRoom(), "", "");
+            cl.createCal(meeting.getSender(), meeting.getReceiver(), meeting.getMeetingFromTime(), meeting.getMeetingDate(), meeting.getMeetingToTime(), meeting.getMeetingRoom(), "", "");
         } catch (MessagingException | ParseException | IOException e) {
             e.printStackTrace();
         }
