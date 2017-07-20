@@ -3,6 +3,8 @@ package com.cdk.springboot.mongo;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 /**
  * Created by rajputs on 7/18/17.
  */
@@ -11,17 +13,17 @@ public class Feedback {
 
     @Id
     private String id;
-    private String employeeid;
-    private String managerid;
-    private String value;
+    private String meetingId;
+    private String feedbacks;
+    private List<String> performanceMatrices;
 
     public Feedback() {}
 
-    public Feedback(String id, String employeeid, String managerid, String value) {
+    public Feedback(String id, String meetingId, String feedbacks, List<String> performanceMatrices) {
         this.id = id;
-        this.employeeid = employeeid;
-        this.managerid = managerid;
-        this.value = value;
+        this.meetingId = meetingId;
+        this.feedbacks = feedbacks;
+        this.performanceMatrices = performanceMatrices;
     }
 
     public String getId() {
@@ -32,37 +34,27 @@ public class Feedback {
         this.id = id;
     }
 
-    public String getEmployeeid() {
-        return employeeid;
+    public String getMeetingId() {
+        return meetingId;
     }
 
-    public void setEmployeeid(String employeeid) {
-        this.employeeid = employeeid;
+    public void setMeetingId(String meetingId) {
+        this.meetingId = meetingId;
     }
 
-    public String getManagerid() {
-        return managerid;
+    public String getFeedbacks() {
+        return feedbacks;
     }
 
-    public void setManagerid(String managerid) {
-        this.managerid = managerid;
+    public void setFeedbacks(String feedbacks) {
+        this.feedbacks = feedbacks;
     }
 
-    public String getValue() {
-        return value;
+    public List<String> getPerformanceMatrices() {
+        return performanceMatrices;
     }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return "Feedback{" +
-                "id='" + id + '\'' +
-                ", employeeid='" + employeeid + '\'' +
-                ", managerid='" + managerid + '\'' +
-                ", value='" + value + '\'' +
-                '}';
+    public void setPerformanceMatrices(List<String> performanceMatrices) {
+        this.performanceMatrices = performanceMatrices;
     }
 }

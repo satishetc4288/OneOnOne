@@ -13,7 +13,7 @@ textarea:focus, input:focus{
 
 
 /**/
-.login-form{width:390px; padding: 250px 0 0 0;}
+.login-form{width:390px; padding: 200px 0 0 0;}
 .login-title{font-family: 'Exo', sans-serif;text-align:center;color: white;}
 .login-userinput{margin-bottom: 10px;}
 .login-button{margin-top:10px; background: #82c600; border: 1px solid #6d9227;}
@@ -91,9 +91,13 @@ textarea:focus, input:focus{
 .feedback-area textarea{
     width: 100%;
 }
+.modal-title{
+    display: inline-block;
+}
 .modal-body h3{
     border-bottom: 1px solid #b2b2b2;
 }
+
 .modal-body .perf-fields input{
     height: 36px; margin: 0 6px 10px 0;
 }
@@ -102,6 +106,9 @@ textarea:focus, input:focus{
 }
 .modal-body .perf-fields .kpi-review{
     width: 200px;
+}
+.plus-sign .fa{
+    font-size: 2.5rem; cursor: pointer; color: #7db119;
 }
 
 

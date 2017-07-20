@@ -65,7 +65,6 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Associate ID</th>
                     <th>Name</th>
                     <th>Date</th>
                     <th>Time</th>
@@ -76,13 +75,12 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat= "item in allMeetings">
-                    <th scope="row">502601</th>
                     <td>{{item.receiver}}</td>
                     <td>{{item.meetingDate}}</td>
                     <td>{{item.meetingFromTime}}</td>
                     <td>{{item.meetingRoom}}</td>
                     <td><i class="fa fa-check" aria-hidden="true"></i> Scheduled</td>
-                    <td><a href="" data-toggle="modal" data-target="#myModal">Feedback</a> </td>
+                    <td><a href="" data-toggle="modal" data-target="#myModal" ng-click="updateDefault(item)">Feedback</a> </td>
                 </tr>
                 </tbody>
             </table>
@@ -93,27 +91,32 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3  class="modal-title" id="exampleModalLabel">Feedback for <span>Sneha Varne</span></h3>
+                    <h3  class="modal-title" id="exampleModalLabel">Feedback for <span>{{defaultMeeting.receiver}}</span></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="feedback-area">
-                        <textarea name="" id="" rows="5" placeholder="Your feedback here"></textarea>
-                    </div>
-                    <h3>Performance Metrics</h3>
-                    <div class="perf-fields">
-                        <input type="text" class="kpi" placeholder="kpi"> <input type="text" class="kpi-review" placeholder="review">
-                    </div>
-                    <div class="perf-fields">
-                        <input type="text" class="kpi" placeholder="kpi"> <input type="text" class="kpi-review" placeholder="review">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Submit</button>
-                </div>
+                <form ng-submit="submitFeedback(feedback)">
+	                <div class="modal-body">
+	                    <div class="feedback-area">
+	                        <textarea name="" id="" rows="5" placeholder="Your feedback here" ng-model="feedback.feedbacks"></textarea>
+	                    </div>
+	                    <h3>Performance Metrics</h3>
+	                    <div class="perf-fields">
+	                        <input type="text" class="kpi" placeholder="kpi" ng-model="feedback.perf1"> <input type="text" class="kpi-review" placeholder="review" ng-model="feedback.reveiw1">
+	                    </div>
+	                    <div class="perf-fields">
+	                        <input type="text" class="kpi" placeholder="kpi" ng-model="feedback.perf2"> <input type="text" class="kpi-review" placeholder="review" ng-model="feedback.reveiw2">
+	                    </div>
+	                    <div class="plus-sign">
+                          <i class="fa fa-plus-circle" aria-hidden="true" title="Add KPI"></i>
+                      </div>
+	                </div>
+	                <div class="modal-footer">
+	                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	                    <button type="submit" class="btn btn-primary">Submit</button>
+	                </div>
+                </form>
             </div>
         </div>
     </div>

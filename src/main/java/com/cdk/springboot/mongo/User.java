@@ -16,15 +16,16 @@ public class User {
     private String username;
     private String password;
     private String name;
-
+    private String associateId;
 
     public User() {}
 
-    public User(String id, String username, String password, String name) {
+    public User(String id, String username, String password, String name, String associateId) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
+        this.associateId = associateId;
     }
 
     public String getId() {
@@ -59,13 +60,11 @@ public class User {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+    public String getAssociateId() {
+        return associateId;
+    }
+
+    public void setAssociateId(String associateId) {
+        this.associateId = associateId;
     }
 }

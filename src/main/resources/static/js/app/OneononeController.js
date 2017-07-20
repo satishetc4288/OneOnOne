@@ -37,6 +37,11 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
       $scope.loginUser = {};
 			$scope.users = [];
 			$scope.allMeetings = [];
+			$scope.defaultMeeting = {};
+
+			$scope.updateDefault = function(meeting) {
+				$scope.defaultMeeting = meeting;
+			}
 
       $scope.loginUser = function(login) {
           var deferred = $q.defer();
@@ -96,5 +101,35 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
           );
           return deferred.promise;
       }
+
+       $scope.parseFeedback = function(feedback){
+          console.log("feedback parsing called")
+          feedback.performanceMatrices = [];
+          feedback.performanceMatrices.push(feedback.perf1 + ":" + feedback.reveiw1);
+          feedback.performanceMatrices.push(feedback.perf2 + ":" + feedback.reveiw2);
+          return feedback;
+       }
+
+       $scope.submitFeedback = function(feedback) {
+            console.log("Submit feedback has been called")
+            feedback.meetingId = $scope.defaultMeeting.id;
+            feedback =  $scope.parseFeedback(feedback);
+	          var deferred = $q.defer();
+	          $http.post(urls.FEEDBACK_INSERT_API, feedback)
+	          .then(
+	              function (response) {
+	                  console.log("Got feedback insert response: " + response.data);
+	                  $scope.feedback = {};
+	                  $scope.defaultMeeting = {};
+	                  deferred.resolve();
+	              },
+	              function (errResponse) {
+	                 console.error('Error while inserting feedback : '+ errResponse);
+	                 $scope.defaultMeeting = {};
+	                 deferred.reject();
+	              }
+	          );
+	          return deferred.promise;
+	      }
 
 }]);

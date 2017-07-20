@@ -6,7 +6,8 @@ app.constant('urls', {
     USER_All_API : 'http://localhost:8080/api/get/all/users/',
     USER_LOGIN_API : 'http://localhost:8080/api/login/',
     INSERT_MEETING_API : 'http://localhost:8080/api/insert/meeting/',
-    USER_ALL_MEETINGS : 'http://localhost:8080/api/get/all/meetings/'
+    USER_ALL_MEETINGS : 'http://localhost:8080/api/get/all/meetings/',
+    FEEDBACK_INSERT_API : 'http://localhost:8080/api/insert/feedback/'
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',

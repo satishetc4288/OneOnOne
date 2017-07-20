@@ -41,4 +41,11 @@ public class MeetingController{
         List<Meeting> insertedMeetings = meetingRepository.findCustomBySender(user.getName());
         return new ResponseEntity<List<Meeting>>(insertedMeetings, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/get/meeting/{id}", method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity<Meeting> getMeetingsById(@PathVariable("id") String id) {
+
+        Meeting meeting = meetingRepository.findOne(id);
+        return new ResponseEntity<Meeting>(meeting, HttpStatus.OK);
+    }
 }
