@@ -10,8 +10,7 @@ angular.module('crudApp').factory('UserService',
                 getUser: getUser,
                 createUser: createUser,
                 updateUser: updateUser,
-                removeUser: removeUser,
-                loginUser: loginUser
+                removeUser: removeUser
             };
 
             return factory;
