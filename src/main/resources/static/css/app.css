@@ -7,7 +7,7 @@ body {
 span{
     display: inline-block;
 }
-textarea:focus, input:focus{
+textarea:focus, input:focus, h3{
     outline: none;
 }
 
@@ -111,14 +111,37 @@ textarea:focus, input:focus{
     font-size: 2.5rem; cursor: pointer; color: #7db119;
 }
 
+/*Accordion*/
+.ui-accordion .ui-accordion-header{
+    background: transparent; color: #82c600; border: 0 none; border-bottom: 1px dotted #82c600;
+}
+.ui-state-active .ui-icon, .ui-icon{
+    background-color: #82c600; border-radius: 50%; margin: 0 10px 0 0;
+}
+.ui-icon{
+    background-color: #d6d6d6;
+}
+.ui-widget-content{
+    border-color: #82c600;
+}
+.login-error{
+    color: #b83838; padding: 4px 8px; border-radius: 6px; font-size: 13px;
+}
+#myModal2 .modal-dialog,
+.modal-content {
+    /* 80% of window height */
+    height: 650px; width: 800px;
+}
+.ui-accordion-header-active + .ui-widget-content{
+    display: block !important; min-height: 250px;
+}
 
 
-
-/* Utilities */
+    /* Utilities */
 .tb-space{
     padding:10px 0;
 }
-.btn-primary{
+.btn-primary, .btn-primary:active, .btn-primary:focus{
     background: #7db119; border: 1px solid #74a519; padding: 10px 14px;
     border-radius: 6px;
 }

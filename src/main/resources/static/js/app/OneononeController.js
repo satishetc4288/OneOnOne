@@ -15,12 +15,18 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
 	    $( "#tags" ).autocomplete({
          source: availableTags
       });
+      $( "#accordion" ).accordion({
+          collapsible: true,
+          active: 0,
+          animate: false
+      });
 
       $scope.loginUser = {};
 			$scope.users = [];
 			$scope.allMeetings = [];
 			$scope.defaultMeeting = {};
 			$scope.errorMessageShow = false;
+			$scope.usersAllFeedbacks = [];
 
 			$scope.updateDefault = function(meeting) {
 				$scope.defaultMeeting = meeting;
@@ -115,5 +121,24 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
 	          );
 	          return deferred.promise;
 	      }
+
+	      $scope.getUserAllFeedback = function(meeting) {
+            console.log("Getting users all feedback")
+            var deferred = $q.defer();
+            $http.post(urls.USER_All_FEEDBACK_API, meeting)
+            .then(
+                function (response) {
+                    console.log("Got users all feedback response: " + JSON.stringify(response.data));
+                    $scope.usersAllFeedbacks = response.data;
+                    deferred.resolve();
+                },
+                function (errResponse) {
+                   console.error('Error while getting users all feedbacks : '+ errResponse);
+                   $scope.usersAllFeedbacks = [];
+                   deferred.reject();
+                }
+            );
+            return deferred.promise;
+        }
 
 }]);
