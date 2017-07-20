@@ -106,23 +106,5 @@ angular.module('crudApp').factory('UserService',
                 return deferred.promise;
             }
 
-
-            function loginUser(login) {
-                console.log('User Logging' + JSON.stringify(login));
-                var deferred = $q.defer();
-                $http.post(urls.USER_LOGIN_API, login)
-                    .then(
-                        function (response) {
-                            console.log("Got user login response: " + response.data);
-                            deferred.resolve(response.data);
-                        },
-                        function (errResponse) {
-                           console.error('Error while creating User : '+errResponse.data.errorMessage);
-                           deferred.reject(errResponse);
-                        }
-                    );
-                return deferred.promise;
-            }
-
         }
     ]);

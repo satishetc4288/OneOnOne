@@ -48,8 +48,9 @@
 
                -->
             <div class="s-form">
-                One-on-one meeting with
-                <input type="text" id="tags" class="select-associate">
+                <label>One-on-one meeting with</label>
+                <input type="text" ng-model="user">
+                <li ng-repeat="item in (users | filter:search)" ng-bind="user"></li>
                 On <input type="text" id="datepicker" class="date-picker">
                 From <input id="basicExample" type="text" class="time" />
                 :

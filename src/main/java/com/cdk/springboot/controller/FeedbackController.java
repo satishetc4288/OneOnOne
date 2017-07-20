@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @EnableAutoConfiguration
-@EnableMongoRepositories({"com.cdk.oneonone"})
+@EnableMongoRepositories({"com.cdk"})
 @RequestMapping("/api")
 public class FeedbackController{
 
