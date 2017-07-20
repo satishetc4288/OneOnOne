@@ -81,8 +81,8 @@
                     <td>{{item.meetingDate}}</td>
                     <td>{{item.meetingFromTime}}</td>
                     <td>{{item.meetingRoom}}</td>
-                    <td><i class="fa fa-check" aria-hidden="true"></i> Accepted</td>
-                    <td><a href="" data-toggle="modal" data-target="#exampleModal" class="feedback-link">Feedback</a> </td>
+                    <td><i class="fa fa-check" aria-hidden="true"></i> Scheduled</td>
+                    <td><a href="" data-toggle="modal" data-target="#myModal">Feedback</a> </td>
                 </tr>
                 </tbody>
             </table>
