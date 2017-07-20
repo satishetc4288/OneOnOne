@@ -120,12 +120,11 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
 	              function (response) {
 	                  console.log("Got feedback insert response: " + response.data);
 	                  $scope.feedback = {};
-	                  $scope.defaultMeeting = {};
 	                  deferred.resolve();
 	              },
 	              function (errResponse) {
 	                 console.error('Error while inserting feedback : '+ errResponse);
-	                 $scope.defaultMeeting = {};
+	                 $scope.feedback = {};
 	                 deferred.reject();
 	              }
 	          );
