@@ -137,118 +137,18 @@
                           <span aria-hidden="true">&times;</span>
                       </button>
                   </div>
-                  <div class="modal-body">
+                  <div class="modal-body" ng-repeat="feedback in usersAllFeedbacks">
                       <div id="accordion">
-                          <h3>Jul 17'</h3>
                           <div>
-                              <p><b>Feedback:</b>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+                              <p><b>Feedback: </b>{{feedback.feedbacks}}</p>
                               <table class="table table-striped">
-                                  <tr>
-                                      <td scope="row" width="70%">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                                  <tr>
-                                      <td scope="row">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                                  <tr>
-                                      <td scope="row">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                              </table>
-                          </div>
-                          <h3>Jun 17'</h3>
-                          <div>
-                              <p><b>Feedback:</b>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-                              <table class="table table-striped">
-                                  <tr>
-                                      <td scope="row" width="70%">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                                  <tr>
-                                      <td scope="row">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                                  <tr>
-                                      <td scope="row">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                              </table>
-                          </div>
-                          <h3>Apr 17'</h3>
-                          <div>
-                              <p><b>Feedback:</b>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-                              <table class="table table-striped">
-                                  <tr>
-                                      <td scope="row" width="70%">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                                  <tr>
-                                      <td scope="row">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                                  <tr>
-                                      <td scope="row">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                              </table>
-                          </div>
-                          <h3>Mar 17'</h3>
-                          <div>
-                              <p><b>Feedback:</b>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-                              <table class="table table-striped">
-                                  <tr>
-                                      <td scope="row" width="70%">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                                  <tr>
-                                      <td scope="row">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                                  <tr>
-                                      <td scope="row">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                              </table>
-                          </div>
-                          <h3>Feb 17'</h3>
-                          <div>
-                              <p><b>Feedback:</b>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-                              <table class="table table-striped">
-                                  <tr>
-                                      <td scope="row" width="70%">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                                  <tr>
-                                      <td scope="row">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                                  <tr>
-                                      <td scope="row">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                              </table>
-                          </div>
-                          <h3>Jan 17'</h3>
-                          <div>
-                              <p><b>Feedback:</b>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-                              <table class="table table-striped">
-                                  <tr>
-                                      <td scope="row" width="70%">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                                  <tr>
-                                      <td scope="row">KPI</td>
-                                      <td>Review</td>
-                                  </tr>
-                                  <tr>
-                                      <td scope="row">KPI</td>
-                                      <td>Review</td>
+                                  <tr ng-repeat="performances in feedback.performanceMatrices">
+                                      <td scope="row" width="70%">{{performances | split:':':0}}</td>
+                                      <td>{{performances | split:':':1}}</td>
                                   </tr>
                               </table>
                           </div>
                       </div>
-
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

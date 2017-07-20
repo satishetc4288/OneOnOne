@@ -32,3 +32,9 @@ app.config(['$stateProvider', '$urlRouterProvider',
         $urlRouterProvider.otherwise('/');
     }]);
 
+app.filter('split', function() {
+        return function(input, splitChar, splitIndex) {
+            return input.split(splitChar)[splitIndex];
+        }
+    });
+
