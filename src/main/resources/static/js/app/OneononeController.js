@@ -124,6 +124,7 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
 
 	      $scope.getUserAllFeedback = function(meeting) {
             console.log("Getting users all feedback")
+            $scope.updateDefault(meeting);
             var deferred = $q.defer();
             $http.post(urls.USER_All_FEEDBACK_API, meeting)
             .then(
