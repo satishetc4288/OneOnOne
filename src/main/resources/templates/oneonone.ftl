@@ -44,10 +44,8 @@
         <form ng-submit="scheduleMeeting(meeting)">
            <section class="schedule-form">
                 <div class="s-form">
-                    <label>One-on-one meeting with</label>
-                    <select>
-                      <option ng-repeat="user in users" ng-model="meeting.receiver">{{user.name}}</option>
-                    </select>
+                    One-on-one meeting with
+                    <input type="text" id="tags" class="select-associate" ng-model="meeting.receiver">
                     On <input type="text" id="datepicker" class="date-picker" ng-model="meeting.meetingDate">
                     From <input id="basicExample" type="text" class="time" ng-model="meeting.meetingFromTime"/>
                     :

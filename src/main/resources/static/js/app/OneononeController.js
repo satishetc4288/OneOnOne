@@ -30,6 +30,9 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
 
 	    $( "#datepicker" ).datepicker();
 	    $('#basicExample, #basicExample2').timepicker();
+	    $( "#tags" ).autocomplete({
+         source: availableTags
+      });
 
       $scope.loginUser = {};
 			$scope.users = [];
@@ -56,7 +59,7 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
       }
 
       $scope.scheduleMeeting = function(meeting) {
-          meeting.sender = $scope.loginUser.sender;
+          meeting.sender = $scope.loginUser.name;
           var deferred = $q.defer();
           $http.post(urls.INSERT_MEETING_API, meeting)
           .then(
