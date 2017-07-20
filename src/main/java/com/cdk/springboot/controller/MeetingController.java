@@ -50,7 +50,7 @@ public class MeetingController{
     @RequestMapping(value = "/get/all/meetings", method = RequestMethod.POST)
     public @ResponseBody ResponseEntity<List<Meeting>> getMeetingsBySender(@RequestBody User user) {
 
-        List<Meeting> insertedMeetings = meetingRepository.findCustomBySender(user.getName());
+        List<Meeting> insertedMeetings = meetingRepository.findCustomBySender(user.getUsername());
         return new ResponseEntity<List<Meeting>>(insertedMeetings, HttpStatus.OK);
     }
 

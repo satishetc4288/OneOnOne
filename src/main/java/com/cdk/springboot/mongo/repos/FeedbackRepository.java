@@ -15,10 +15,7 @@ import java.util.List;
 @Repository
 public interface FeedbackRepository extends MongoRepository<Feedback, String> {
 
-    @Query("{employeeid:'?0'}")
-    public List<Feedback> findCustomByEmployee(String employeeid);
-
-    @Query("{managerid:'?0'}")
-    public List<Feedback> findCustomByManager(String managerid);
+    @Query("{meetingId:'?0'}")
+    public List<Feedback> findCustomByMeetingId(String meetingId);
 
 }
