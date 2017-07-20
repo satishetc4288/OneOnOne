@@ -4,28 +4,10 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
 			function($scope, $localStorage, $http, $q, urls) {
 
 			var availableTags = [
-         "ActionScript",
-         "AppleScript",
-         "Asp",
-         "BASIC",
-         "C",
-         "C++",
-         "Clojure",
-         "COBOL",
-         "ColdFusion",
-         "Erlang",
-         "Fortran",
-         "Groovy",
-         "Haskell",
-         "Java",
-         "JavaScript",
-         "Lisp",
-         "Perl",
-         "PHP",
-         "Python",
-         "Ruby",
-         "Scala",
-         "Scheme"
+         "dipak.suryavanshi@cdk.com",
+         "satish.rajput@cdk.com",
+         "vedprakash.gupta@cdk.com",
+         "punam.gaikwad@cdk.com"
 	    ];
 
 	    $( "#datepicker" ).datepicker();
@@ -38,6 +20,7 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
 			$scope.users = [];
 			$scope.allMeetings = [];
 			$scope.defaultMeeting = {};
+			$scope.errorMessageShow = false;
 
 			$scope.updateDefault = function(meeting) {
 				$scope.defaultMeeting = meeting;
@@ -55,10 +38,12 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
                   $scope.loginUser = response.data;
                   $scope.users = $localStorage.users;
                   $scope.getAllMeetings();
+                  $scope.errorMessageShow = false;
                   deferred.resolve();
               },
               function (errResponse) {
                  console.error('Error while creating User : '+ errResponse);
+                 $scope.errorMessageShow = true;
                  deferred.reject();
               }
           );
@@ -66,7 +51,7 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
       }
 
       $scope.scheduleMeeting = function(meeting) {
-          meeting.sender = $scope.loginUser.name;
+          meeting.sender = $scope.loginUser.username;
           var deferred = $q.defer();
           $http.post(urls.INSERT_MEETING_API, meeting)
           .then(

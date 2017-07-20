@@ -1,5 +1,6 @@
 package com.cdk.springboot.controller;
 
+import com.cdk.springboot.mongo.Meeting;
 import com.cdk.springboot.mongo.User;
 import com.cdk.springboot.mongo.repos.UserMRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,13 @@ public class UserController {
             return new ResponseEntity<List<User>>(new ArrayList<User>(), HttpStatus.OK);
         }
         return  new ResponseEntity<List<User>>(users, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/insert/user", method = RequestMethod.POST)
+    public @ResponseBody ResponseEntity<User> insertUser(@RequestBody User user) {
+
+        User insertedUser = userRepository.insert(user);
+        return new ResponseEntity<User>(insertedUser, HttpStatus.OK);
     }
 
 }
