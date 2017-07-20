@@ -36,6 +36,7 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
 
       $scope.loginUser = {};
 			$scope.users = [];
+			$scope.allMeetings = [];
 
       $scope.loginUser = function(login) {
           var deferred = $q.defer();
@@ -48,6 +49,7 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
 
                   $scope.loginUser = response.data;
                   $scope.users = $localStorage.users;
+                  $scope.getAllMeetings();
                   deferred.resolve();
               },
               function (errResponse) {
@@ -66,11 +68,29 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
               function (response) {
                   console.log("Got schedule meeting response: " + response.data);
                   $scope.meeting = {};
+                  $scope.getAllMeetings();
                   deferred.resolve();
               },
               function (errResponse) {
                  console.error('Error while scheduling meeting : '+ errResponse);
                  $scope.meeting = {};
+                 deferred.reject();
+              }
+          );
+          return deferred.promise;
+      }
+
+      $scope.getAllMeetings = function() {
+          var deferred = $q.defer();
+          $http.get(urls.USER_ALL_MEETINGS)
+          .then(
+              function (response) {
+                  console.log("Got users all meeting response: " + response.data);
+                  $scope.allMeetings = response.data;
+                  deferred.resolve();
+              },
+              function (errResponse) {
+                 console.error('Error while getting all users meeting : '+ errResponse);
                  deferred.reject();
               }
           );

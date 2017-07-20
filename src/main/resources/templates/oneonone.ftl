@@ -75,23 +75,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr ng-repeat= "item in allMeetings">
                     <th scope="row">502601</th>
-                    <td>Sneha Varne</td>
-                    <td>Monday, 16th July</td>
-                    <td>11:00am - 11:30am</td>
-                    <td>Samiti</td>
+                    <td>{{item.receiver}}</td>
+                    <td>{{item.meetingDate}}</td>
+                    <td>{{item.meetingFromTime}}</td>
+                    <td>{{item.meetingRoom}}</td>
                     <td><i class="fa fa-check" aria-hidden="true"></i> Accepted</td>
                     <td><a href="" data-toggle="modal" data-target="#exampleModal" class="feedback-link">Feedback</a> </td>
-                </tr>
-                <tr>
-                    <th scope="row">502601</th>
-                    <td>Sneha Varne</td>
-                    <td>Monday, 16th July</td>
-                    <td>11:00am - 11:30am</td>
-                    <td>Samiti</td>
-                    <td><i class="fa fa-info" aria-hidden="true"></i> Scheduled</td>
-                    <td>&nbsp;</td>
                 </tr>
                 </tbody>
             </table>

@@ -1,10 +1,13 @@
 package com.cdk.springboot.controller;
 
 import com.cdk.springboot.mongo.Meeting;
+import com.cdk.springboot.mongo.User;
 import com.cdk.springboot.mongo.repos.MeetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,16 +22,23 @@ public class MeetingController{
     MeetingRepository meetingRepository;
 
     @RequestMapping(value = "/insert/meeting", method = RequestMethod.POST)
-    @ResponseBody
-    public Meeting insertMeeting(@RequestBody Meeting meeting) {
+    public @ResponseBody ResponseEntity<Meeting> insertMeeting(@RequestBody Meeting meeting) {
 
-        return meetingRepository.insert(meeting);
+        Meeting insertedMeeting = meetingRepository.insert(meeting);
+        return new ResponseEntity<Meeting>(insertedMeeting, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/get/all/meetings", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Meeting> getMeetings() {
+    public @ResponseBody ResponseEntity<List<Meeting>> getMeetings() {
 
-        return meetingRepository.findAll();
+        List<Meeting> insertedMeetings = meetingRepository.findAll();
+        return new ResponseEntity<List<Meeting>>(insertedMeetings, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/get/all/meetings", method = RequestMethod.POST)
+    public @ResponseBody ResponseEntity<List<Meeting>> getMeetingsBySender(@RequestBody User user) {
+
+        List<Meeting> insertedMeetings = meetingRepository.findCustomBySender(user.getName());
+        return new ResponseEntity<List<Meeting>>(insertedMeetings, HttpStatus.OK);
     }
 }
