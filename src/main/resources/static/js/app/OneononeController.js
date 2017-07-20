@@ -28,7 +28,10 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
          "Scheme"
 	    ];
 
-			$scope.user = {};
+	    $( "#datepicker" ).datepicker();
+	    $('#basicExample, #basicExample2').timepicker();
+
+      $scope.loginUser = {};
 			$scope.users = [];
 
       $scope.loginUser = function(login) {
@@ -39,8 +42,9 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
                   console.log("Got user login response: " + response.data);
                   $('.login-form').addClass("hide");
                   $('.landing').removeClass("hide");
-                  $localStorage.loginUser = response.data;
-                  $scope.getAllUsers();
+
+                  $scope.loginUser = response.data;
+                  $scope.users = $localStorage.users;
                   deferred.resolve();
               },
               function (errResponse) {
@@ -51,17 +55,19 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
           return deferred.promise;
       }
 
-      $scope.getAllUsers = function() {
+      $scope.scheduleMeeting = function(meeting) {
+          meeting.sender = $scope.loginUser.sender;
           var deferred = $q.defer();
-          $http.get(urls.USER_All_API)
+          $http.post(urls.INSERT_MEETING_API, meeting)
           .then(
               function (response) {
-                  console.log("Got all the users: " + response.data);
-                  $scope.users = response.data;
+                  console.log("Got schedule meeting response: " + response.data);
+                  $scope.meeting = {};
                   deferred.resolve();
               },
               function (errResponse) {
-                 console.error('Error while creating User : '+ errResponse);
+                 console.error('Error while scheduling meeting : '+ errResponse);
+                 $scope.meeting = {};
                  deferred.reject();
               }
           );

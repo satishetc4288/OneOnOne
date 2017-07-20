@@ -13,20 +13,24 @@ public class Meeting {
     private String id;
     private String sender;
     private String receiver;
-    private String from;
-    private String to;
     private String feedback;
+    private String meetingRoom;
+    private String meetingDate;
+    private String meetingFromTime;
+    private String meetingToTime;
 
-    public Meeting(String id, String sender, String receiver, String from, String to, String feedback) {
+    public Meeting() {
+    }
+
+    public Meeting(String id, String sender, String receiver, String feedback, String meetingRoom, String meetingDate, String meetingFromTime, String meetingToTime) {
         this.id = id;
         this.sender = sender;
         this.receiver = receiver;
-        this.from = from;
-        this.to = to;
         this.feedback = feedback;
-    }
-
-    public Meeting() {
+        this.meetingRoom = meetingRoom;
+        this.meetingDate = meetingDate;
+        this.meetingFromTime = meetingFromTime;
+        this.meetingToTime = meetingToTime;
     }
 
     public String getId() {
@@ -53,22 +57,6 @@ public class Meeting {
         this.receiver = receiver;
     }
 
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
-    }
-
-    public String getTo() {
-        return to;
-    }
-
-    public void setTo(String to) {
-        this.to = to;
-    }
-
     public String getFeedback() {
         return feedback;
     }
@@ -77,15 +65,35 @@ public class Meeting {
         this.feedback = feedback;
     }
 
-    @Override
-    public String toString() {
-        return "Meeting{" +
-                "id='" + id + '\'' +
-                ", sender='" + sender + '\'' +
-                ", receiver='" + receiver + '\'' +
-                ", from='" + from + '\'' +
-                ", to='" + to + '\'' +
-                ", feedback='" + feedback + '\'' +
-                '}';
+    public String getMeetingRoom() {
+        return meetingRoom;
+    }
+
+    public void setMeetingRoom(String meetingRoom) {
+        this.meetingRoom = meetingRoom;
+    }
+
+    public String getMeetingDate() {
+        return meetingDate;
+    }
+
+    public void setMeetingDate(String meetingDate) {
+        this.meetingDate = meetingDate;
+    }
+
+    public String getMeetingFromTime() {
+        return meetingFromTime;
+    }
+
+    public void setMeetingFromTime(String meetingFromTime) {
+        this.meetingFromTime = meetingFromTime;
+    }
+
+    public String getMeetingToTime() {
+        return meetingToTime;
+    }
+
+    public void setMeetingToTime(String meetingToTime) {
+        this.meetingToTime = meetingToTime;
     }
 }

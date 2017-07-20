@@ -41,26 +41,24 @@
                </span>
         </div>
         <!-- Scheduling Form -->
-        <section class="schedule-form">
-            <!--
-               https://twitter.github.io/typeahead.js/examples/
-               http://blog.teamtreehouse.com/creating-autocomplete-dropdowns-datalist-element
-
-               -->
-            <div class="s-form">
-                <label>One-on-one meeting with</label>
-                <input type="text" ng-model="user">
-                <li ng-repeat="item in (users | filter:search)" ng-bind="user"></li>
-                On <input type="text" id="datepicker" class="date-picker">
-                From <input id="basicExample" type="text" class="time" />
-                :
-                To <input id="basicExample2" type="text" class="time" />
-                In
-                <input type="text" id="tags2">
-                Room.
-            </div>
-            <input type="submit" value="Schedule" class="btn-primary">
-        </section>
+        <form ng-submit="scheduleMeeting(meeting)">
+           <section class="schedule-form">
+                <div class="s-form">
+                    <label>One-on-one meeting with</label>
+                    <select>
+                      <option ng-repeat="user in users" ng-model="meeting.receiver">{{user.name}}</option>
+                    </select>
+                    On <input type="text" id="datepicker" class="date-picker" ng-model="meeting.meetingDate">
+                    From <input id="basicExample" type="text" class="time" ng-model="meeting.meetingFromTime"/>
+                    :
+                    To <input id="basicExample2" type="text" class="time" ng-model="meeting.meetingToTime"/>
+                    In
+                    <input type="text" id="tags2" ng-model="meeting.meetingRoom">
+                    Room.
+                </div>
+                <input type="submit" value="Schedule" class="btn-primary">
+            </section>
+        </form>
         <div class="meetings-list">
             <br><br>
             <hr>
