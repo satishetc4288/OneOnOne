@@ -41,7 +41,7 @@
             <span class="fa fa-bell-o"></span>
             <span class="u-name">
                <i class="fa fa-user-circle-o"></i>
-               User
+               {{loginUser.name}}
                </span>
         </div>
         <!-- Scheduling Form -->
