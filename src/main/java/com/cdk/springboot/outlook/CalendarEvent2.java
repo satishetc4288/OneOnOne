@@ -1,7 +1,9 @@
 package com.cdk.springboot.outlook;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -42,7 +44,7 @@ public CalendarEvent2(JavaMailSender javaMailSender) {
     this.javaMailSender = javaMailSender;
 }
 
-public void createCal(String sender,String reciepnts, String meetingFromTime,String startDate, String meetingToTime, String meetingRoom,String subjectLine, String description) throws MessagingException, ParseException, IOException {
+public void createCal(String sender,String reciepnts, String meetingFromTime,String meetingDate, String meetingToTime, String meetingRoom,String subjectLine, String description) throws MessagingException, ParseException, IOException {
 
     ICalendar ical = new ICalendar();
 
@@ -57,16 +59,32 @@ public void createCal(String sender,String reciepnts, String meetingFromTime,Str
     event.addAttendee(attendee);
 
     event.setSummary("hello");
+//    DateFormat d = new SimpleDateFormat("yyyy/MM/dd");
+//    Date date =  d.parse(meetingDate);
+  
+    
+//    SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
+//    SimpleDateFormat parseFormat = new SimpleDateFormat("hh:mm a");
+//    Date fromTime = parseFormat.parse(meetingFromTime);
+//    Date toTime= parseFormat.parse(meetingToTime);
     
     
+     SimpleDateFormat displayFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+	 SimpleDateFormat parseFormat = new SimpleDateFormat("MM/dd/yyyy hh:mma");
+    
+	 Date fromTime = parseFormat.parse(meetingDate+" "+meetingFromTime);
+     Date toTime= parseFormat.parse(meetingDate+" "+meetingToTime);
+    
+//    DateTime dt = new DateTime(date.getYear(), date.getMonth(), date.getDate(), 12, 50);
+//    DateTime et = new DateTime(date.getYear(), date.getMonth(), date.getDate(), 13, 30);
+//    Date starts = (Date) dt.toDate();
+//    Date ends = (Date) et.toDate();
 
-    DateTime dt = new DateTime(2017, 8, 20, 12, 50);
-    DateTime et = new DateTime(2017, 8, 20, 13, 30);
-    Date starts = (Date) dt.toDate();
-    Date ends = (Date) et.toDate();
-
-    DateStart thisStart = new DateStart(starts, true);
-    DateEnd dateEnd = new DateEnd(ends, true);
+     
+     System.out.println("from time:"+fromTime);
+     System.out.println("to time:"+toTime);
+    DateStart thisStart = new DateStart(fromTime, true);
+    DateEnd dateEnd = new DateEnd(toTime, true);
 
     event.setDateStart(thisStart);
     event.setDateEnd(dateEnd);
