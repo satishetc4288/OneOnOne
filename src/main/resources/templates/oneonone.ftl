@@ -1,7 +1,8 @@
 <div class="container login-form">
-    <div class="logo tb-space">
+    <div class="logo tb-space text-center">
         <img src="img/Logo.png" height="30" alt="Logo">
     </div>
+    <br></br>
     <!--Form-->
     <div class="form-container">
         <form ng-submit="loginUser(formAdata)">
@@ -59,6 +60,9 @@
                     Room.
                 </div>
                 <input type="submit" value="Schedule" class="btn-primary">
+                <div class="alert alert-success" role="alert" ng-show="showSchedulingAlert">
+                  <strong>Success!</strong> You successfully scheduled a meeting.
+                </div>
             </section>
         </form>
         <div class="meetings-list">
@@ -120,7 +124,7 @@
 	                </div>
 	                <div class="modal-footer">
 	                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	                    <button type="submit" class="btn btn-primary">Submit</button>
+	                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
 	                </div>
                 </form>
             </div>

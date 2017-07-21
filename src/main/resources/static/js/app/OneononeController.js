@@ -7,7 +7,8 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
          "dipak.suryavanshi@cdk.com",
          "satish.rajput@cdk.com",
          "vedprakash.gupta@cdk.com",
-         "punam.gaikwad@cdk.com"
+         "punam.gaikwad@cdk.com",
+         "sneha.varne@cdk.com"
 	    ];
 
 	    $( "#datepicker" ).datepicker();
@@ -27,6 +28,7 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
 			$scope.defaultMeeting = {};
 			$scope.errorMessageShow = false;
 			$scope.usersAllFeedbacks = [];
+			$scope.showSchedulingAlert= false;
 
 			$scope.updateDefault = function(meeting) {
 				$scope.defaultMeeting = meeting;
@@ -65,6 +67,7 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
                   console.log("Got schedule meeting response: " + response.data);
                   $scope.meeting = {};
                   $scope.getAllMeetings();
+                  $scope.showSchedulingAlert= true;
                   deferred.resolve();
               },
               function (errResponse) {

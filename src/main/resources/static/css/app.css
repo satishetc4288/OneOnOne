@@ -150,3 +150,7 @@ textarea:focus, input:focus, h3{
 .table-striped .fa{
     font-weight:normal;
 }
+.alert-success{
+	display: inline-block;
+	margin: 0 0 0 20px; padding: 10px;
+}
