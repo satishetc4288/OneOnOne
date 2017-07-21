@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('crudApp').controller('OneononeController', ['$scope', '$localStorage', '$http', '$q', 'urls',
-			function($scope, $localStorage, $http, $q, urls) {
+angular.module('crudApp').controller('OneononeController', ['$scope', '$localStorage', '$http', '$q', 'urls', '$timeout',
+			function($scope, $localStorage, $http, $q, urls, $timeout) {
 
 			var availableTags = [
          "dipak.suryavanshi@cdk.com",
@@ -33,6 +33,13 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
 			$scope.updateDefault = function(meeting) {
 				$scope.defaultMeeting = meeting;
 			}
+
+			$scope.doGreeting = function() {
+         $scope.showSchedulingAlert = true;
+         $timeout(function(){
+            $scope.showSchedulingAlert = false;
+         }, 3000);
+      };
 
       $scope.loginUser = function(login) {
           var deferred = $q.defer();
@@ -67,7 +74,7 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
                   console.log("Got schedule meeting response: " + response.data);
                   $scope.meeting = {};
                   $scope.getAllMeetings();
-                  $scope.showSchedulingAlert= true;
+                  $scope.doGreeting();
                   deferred.resolve();
               },
               function (errResponse) {
