@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('crudApp').controller('OneononeController', ['$scope', '$localStorage', '$http', '$q', 'urls', '$timeout',
-			function($scope, $localStorage, $http, $q, urls, $timeout) {
+angular.module('crudApp').controller('SchedulerController', ['$scope', '$q', 'urls', '$timeout', 'UserService', '$rootScope',
+			function($scope, $q, urls, $timeout, UserService, $rootScope) {
 
 			var availableTags = [
          "dipak.suryavanshi@cdk.com",
@@ -22,13 +22,14 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
           animate: false
       });
 
-      $scope.loginUser = {};
 			$scope.users = [];
 			$scope.allMeetings = [];
 			$scope.defaultMeeting = {};
 			$scope.errorMessageShow = false;
 			$scope.usersAllFeedbacks = [];
 			$scope.showSchedulingAlert= false;
+
+
 
 			$scope.updateDefault = function(meeting) {
 				$scope.defaultMeeting = meeting;
@@ -41,34 +42,10 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
          }, 3000);
       };
 
-      $scope.loginUser = function(login) {
-          var deferred = $q.defer();
-          $http.post(urls.USER_LOGIN_API, login)
-          .then(
-              function (response) {
-                  console.log("Got user login response: " + response.data);
-                  $('.login-form').addClass("hide");
-                  $('.landing').removeClass("hide");
-
-                  $scope.loginUser = response.data;
-                  $scope.users = $localStorage.users;
-                  $scope.getAllMeetings();
-                  $scope.errorMessageShow = false;
-                  deferred.resolve();
-              },
-              function (errResponse) {
-                 console.error('Error while creating User : '+ errResponse);
-                 $scope.errorMessageShow = true;
-                 deferred.reject();
-              }
-          );
-          return deferred.promise;
-      }
-
       $scope.scheduleMeeting = function(meeting) {
-          meeting.sender = $scope.loginUser.username;
+          meeting.sender = $rootScope.loginUser.username;
           var deferred = $q.defer();
-          $http.post(urls.INSERT_MEETING_API, meeting)
+          UserService.postRequest(urls.INSERT_MEETING_API, meeting)
           .then(
               function (response) {
                   console.log("Got schedule meeting response: " + response.data);
@@ -88,7 +65,7 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
 
       $scope.getAllMeetings = function() {
           var deferred = $q.defer();
-          $http.get(urls.USER_ALL_MEETINGS)
+          UserService.getRequest(urls.USER_ALL_MEETINGS)
           .then(
               function (response) {
                   console.log("Got users all meeting response: " + response.data);
@@ -116,7 +93,7 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
             feedback.meetingId = $scope.defaultMeeting.id;
             feedback =  $scope.parseFeedback(feedback);
 	          var deferred = $q.defer();
-	          $http.post(urls.FEEDBACK_INSERT_API, feedback)
+	          UserService.postRequest(urls.FEEDBACK_INSERT_API, feedback)
 	          .then(
 	              function (response) {
 	                  console.log("Got feedback insert response: " + response.data);
@@ -136,7 +113,7 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
             console.log("Getting users all feedback")
             $scope.updateDefault(meeting);
             var deferred = $q.defer();
-            $http.post(urls.USER_All_FEEDBACK_API, meeting)
+            UserService.postRequest(urls.USER_All_FEEDBACK_API, meeting)
             .then(
                 function (response) {
                     console.log("Got users all feedback response: " + JSON.stringify(response.data));
@@ -151,5 +128,26 @@ angular.module('crudApp').controller('OneononeController', ['$scope', '$localSto
             );
             return deferred.promise;
         }
+
+        $scope.loadAllUsers = function() {
+            console.log('Fetching all users');
+            var deferred = $q.defer();
+            UserService.getRequest(urls.USER_All_API)
+                .then(
+                    function (response) {
+                        console.log('Fetched successfully all users');
+                        $scope.users = response.data;
+                        deferred.resolve();
+                    },
+                    function (errResponse) {
+                        console.error('Error while loading users');
+                        deferred.reject();
+                    }
+                );
+            return deferred.promise;
+        }
+
+        $scope.loadAllUsers();
+        $scope.getAllMeetings();
 
 }]);

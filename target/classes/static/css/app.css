@@ -1,0 +1,156 @@
+html, body{
+    font-size: 16px;
+}
+body {
+    padding: 40px 0 0 0;
+}
+span{
+    display: inline-block;
+}
+textarea:focus, input:focus, h3{
+    outline: none;
+}
+
+
+/**/
+.login-form{width:390px; padding: 200px 0 0 0;}
+.login-title{font-family: 'Exo', sans-serif;text-align:center;color: white;}
+.login-userinput{margin-bottom: 10px;}
+.login-button{margin-top:10px; background: #82c600; border: 1px solid #6d9227;}
+.login-button:hover{background: #7db119; border: 1px solid #6d9227;}
+.login-options{margin-bottom:0px;}
+.login-forgot{float: right;}
+
+
+/*Meerting*/
+.header{
+    vertical-align: middle;
+}
+.sche-meeting{
+    width: 1180px; margin: 0 auto;
+}
+.logo-inner{
+}
+.user-profile-bg{
+    position: absolute; top: 104px; left: 0; width: 100%; z-index: -1;
+    background: #2b2d28; padding: 8px 0; height: 50px;
+}
+.user-profile-cont{
+    text-align: right; padding: 40px 0; color: white;
+}
+.user-profile-cont .fa{
+    font-size: 1.3rem;
+}
+.user-profile-cont span{
+    margin: 0 20px 0 0;
+}
+.section-title{
+    font-size: 1.4rem;
+    top: -7px;
+    position: relative;
+}
+
+/**/
+.schedule-form{
+    width: 800px;
+}
+
+.schedule-form .s-form{
+    font-size: 2rem;
+    padding:0 0 24px 0; margin: 0 0 10px 0;
+    border-bottom: 1px solid lightgray;
+}
+
+.schedule-form .s-form input[type=text] {
+    background: transparent; color:#8C19B1;
+    border: none;
+    border-bottom: 1px dotted #000000;
+}
+
+.schedule-form .s-form .select-associate{
+    width: 380px;
+}
+.schedule-form .s-form  .date-picker{
+    width: 180px;
+}
+
+.schedule-form .s-form  .time{
+    width: 130px;
+}
+.meetings-list .fa-check{
+    color: #4cbe75;
+}
+
+.meetings-list .table-striped .fa{
+    width: 20px; text-align: center;
+}
+.feedback-area{
+    padding: 0 0 10px 0;
+}
+
+.feedback-area textarea{
+    width: 100%;
+}
+.modal-title{
+    display: inline-block;
+}
+.modal-body h3{
+    border-bottom: 1px solid #b2b2b2;
+}
+
+.modal-body .perf-fields input{
+    height: 36px; margin: 0 6px 10px 0;
+}
+.modal-body .perf-fields .kpi{
+    width: 350px;
+}
+.modal-body .perf-fields .kpi-review{
+    width: 200px;
+}
+.plus-sign .fa{
+    font-size: 2.5rem; cursor: pointer; color: #7db119;
+}
+
+/*Accordion*/
+.ui-accordion .ui-accordion-header{
+    background: transparent; color: #82c600; border: 0 none; border-bottom: 1px dotted #82c600;
+}
+.ui-state-active .ui-icon, .ui-icon{
+    background-color: #82c600; border-radius: 50%; margin: 0 10px 0 0;
+}
+.ui-icon{
+    background-color: #d6d6d6;
+}
+.ui-widget-content{
+    border-color: #82c600;
+}
+.login-error{
+    color: #b83838; padding: 4px 8px; border-radius: 6px; font-size: 13px;
+}
+#myModal2 .modal-dialog,
+.modal-content {
+    /* 80% of window height */
+    height: 650px; width: 800px;
+}
+.ui-accordion-header-active + .ui-widget-content{
+    display: block !important; min-height: 250px;
+}
+
+
+    /* Utilities */
+.tb-space{
+    padding:10px 0;
+}
+.btn-primary, .btn-primary:active, .btn-primary:focus{
+    background: #7db119; border: 1px solid #74a519; padding: 10px 14px;
+    border-radius: 6px;
+}
+.btn-primary:hover{background: #6d9227; border: 1px solid #6d9227;}
+
+.table-striped .fa{
+    font-weight:normal;
+}
+.alert-success{
+	display: inline-block;
+	margin: 0 0 0 20px; padding: 10px;
+}
